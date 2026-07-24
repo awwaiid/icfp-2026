@@ -1,0 +1,48 @@
+
+triangle numbers
+
+5: 5 + 4 + 3 + 2 + 1
+
+in = [5]
+a = 0
+b = 0
+bp = 0
+
+
+a = input()
+bp = a
+
+
+if bp > 0:
+  bp--
+  # How can I track the total and the count with only a and b?
+
+
+else:
+  send()
+
+
+
+memory = [0, 0, 0 .... 0] # 100 times
+
+loop:
+  operation = input()
+  cellnum = input()
+
+  if operation == 0:
+    output(memory[cellnum])
+  else:
+    newval = input()
+    memory[cellnum] = newVal
+
+
+inputs = [ 0 5 1 5 10 1 6 9 0 6 0 5 ]
+
+  0 5     # read cell 5
+  1 5 10  # write 10 to cell 5
+  1 6 9   # write 9  to cell 6
+  0 6     # read cell 6
+  0 5     # read cell 5
+
+  
+
