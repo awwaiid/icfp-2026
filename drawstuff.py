@@ -19,4 +19,7 @@ memory_cell = d("""
 # proggie.draw_at(x, y, memory_cell)
 #
 # proggie.print()
+#
+# also ... these cells should be parameterizable
+# Like spin(16)
 
