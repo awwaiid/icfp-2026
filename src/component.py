@@ -1,4 +1,4 @@
-from src.canvas import Canvas, clean
+from .canvas import Canvas, clean
 
 
 class Component:

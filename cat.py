@@ -1,23 +1,6 @@
 from src.component import Component
-
-
-class Input(Component):
-    def init(self):
-        self.load_from_string("""
-            +-+
-            |I|
-            +-+
-        """)
-
-
-class Output(Component):
-    def init(self):
-        self.load_from_string("""
-            +-+
-            |O|
-            +-+
-        """)
-
+from src.input import Input
+from src.output import Output
 
 class Cat(Component):
     def init(self):
