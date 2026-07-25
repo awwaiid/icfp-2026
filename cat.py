@@ -8,7 +8,7 @@ class Cat(Component):
         out = Output()
         self.draw_at(0, 0, inp)
         self.draw_at(inp.width + 5, 0, out)
-        self.draw_pipe(inp.width, 1, inp.width + 4, 1)
+        self.draw_pipe([inp.width - 1, 1, inp.width + 5, 1])
 
 
 if __name__ == "__main__":

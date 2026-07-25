@@ -21,7 +21,7 @@ class SumNNums(Component):
         #     loop to done check
         self.load_from_string("""
             +---------+
-           >|@>Rb>dWSV|
+           >|@>Rb>dWSV|>
             |    mR  M|
             |     +  -|
             |     W  W|

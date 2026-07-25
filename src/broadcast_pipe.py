@@ -8,5 +8,5 @@ class BroadcastPipe(Component):
             +-----+
            >|@>RSV|>
             | ^  <|>
-            +-----|
+            +-----+
         """)
