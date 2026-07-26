@@ -33,6 +33,16 @@ class Stack(Component):
              +-------------+
         """)
 
+        # self.load_from_string("""
+        #      +----------------+
+        #     >|@>RX1SWS+WRS   V|>
+        #      | ^             <|
+        #      |      >V        |
+        #      |   >0-X 0SSW   ^| # What does this do if the stack is empty? Ideally would not break and return 0?
+        #      |      >>0S1W-SW^|
+        #      +----------------+
+        # """)
+
         memory = Memory()
         self.draw(memory, x=17, y=0)
 

@@ -1,4 +1,5 @@
 import heapq
+import re
 
 from .canvas import Canvas, clean
 
@@ -22,7 +23,10 @@ class Component:
         pass
 
     def load_from_string(self, s, x=0, y=0):
-        """Inject a multi-line string onto the canvas at (x, y)."""
+        """Inject a multi-line string onto the canvas at (x, y).
+
+        A ` # ...` on any line is a comment and is stripped."""
+        s = re.sub(r" #.*$", "", s, flags=re.MULTILINE)
         self.canvas.place_grid(clean(s), x, y)
 
     def draw(self, thing, x=None, y=None, right_of=None, left_of=None,

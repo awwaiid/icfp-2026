@@ -9,6 +9,7 @@ class DispatchHeader(Component):
         # Load cell num -> BP
         # Load value, if needed -> B
         self.load_from_string("""
+            v    s0<
             >@RWRbWXV
                    W 
                    R 
@@ -49,6 +50,8 @@ class Dispatcher(Component):
         # Entry port just left of the wall, feeding the header
         self.canvas.set(x1 - 1, y1 + 1, ">")
         self.add_port("in", x1 - 1, y1 + 1)
+        self.canvas.set(x2 + 1, 1, ">")
+        self.add_port("out_error", x2 + 1, 1, direction="e")
 
         # One east-facing port per entry, just outside the right wall,
         # aligned with the entry's first 's'
@@ -75,10 +78,11 @@ class Memory(Component):
             cells.append(cell)
 
         # Merge all the memory cell outputs into one stream
-        merge = PipeMerge(len(cells))
-        self.draw(merge, right_of=cells[0], spacing=3)
+        merge = PipeMerge(len(cells)+1)
+        self.draw(merge, right_of=cells[0], y=1, spacing=3)
+        self.connect(dispatcher, "out_error", merge, "in1")
         for i, cell in enumerate(cells, start=1):
-            self.connect(cell, "out", merge, f"in{i}")
+            self.connect(cell, "out", merge, f"in{i+1}")
 
         self.add_port("in", *dispatcher.port("in"))
         self.add_port("out", *merge.port("out"))
