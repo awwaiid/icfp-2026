@@ -7,3 +7,4 @@ class Input(Component):
             |I|>
             +-+
         """)
+        self.add_port("out", self.width - 1, 1)

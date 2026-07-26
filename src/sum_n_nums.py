@@ -29,3 +29,7 @@ class SumNNums(Component):
             | ^      <|
             +---------+
         """)
+        self.add_port("in", 0, 1)
+        # Second input stream (the numbers to sum), fed from above
+        self.add_port("in_top", 9, -1, "s")
+        self.add_port("out", self.width - 1, 1)

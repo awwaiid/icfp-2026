@@ -13,42 +13,16 @@ class Triangle(Component):
         sum_n_nums = SumNNums()
         broadcast_pipe = BroadcastPipe()
 
-        self.draw_at(0, 0, inp)
-        self.draw_at(inp.width, 0, broadcast_pipe)
+        self.draw(inp, x=0, y=0)
+        self.draw(broadcast_pipe, right_of=inp)
+        self.draw(count_down, right_of=broadcast_pipe, spacing=5)
+        self.draw(sum_n_nums, below=count_down, spacing=3)
+        self.draw(out, right_of=sum_n_nums)
 
-        self.draw_at(inp.width+broadcast_pipe.width + 5, 0, count_down)
-
-        # Connect broadcast to count_down
-        self.draw_pipe([
-                inp.width+broadcast_pipe.width - 1, 1,
-                inp.width+broadcast_pipe.width + 5, 1
-            ])
-
-
-
-        self.draw_at(inp.width+broadcast_pipe.width + 5, count_down.height+3, sum_n_nums)
-
-        # Connect broadcast to the sum_n_nums
-        self.draw_pipe([
-                inp.width+broadcast_pipe.width - 1, 2,
-                inp.width+broadcast_pipe.width + 1, 2,
-                inp.width+broadcast_pipe.width + 1, count_down.height+4,
-                inp.width+broadcast_pipe.width + 5, count_down.height+4
-            ])
-
-        # Connect count_down to sum_n_nums (feed the list of numbers to be summed)
-        self.draw_pipe([
-            inp.width + broadcast_pipe.width + 5 + count_down.width - 1, 1,
-            inp.width + broadcast_pipe.width + 5 + count_down.width + 0, 1,
-            inp.width + broadcast_pipe.width + 5 + count_down.width + 0, count_down.height + 1,
-            inp.width + broadcast_pipe.width + 5 + count_down.width - 7, count_down.height + 1,
-            inp.width + broadcast_pipe.width + 5 + count_down.width - 7, count_down.height + 2
-        ])
-
-
-
-
-        self.draw_at(inp.width+broadcast_pipe.width + 5 + sum_n_nums.width, count_down.height+3, out)
+        self.connect(broadcast_pipe, "out1", count_down, "in")
+        self.connect(broadcast_pipe, "out2", sum_n_nums, "in")
+        # Feed the list of numbers to be summed
+        self.connect(count_down, "out", sum_n_nums, "in_top")
 
 
 if __name__ == "__main__":

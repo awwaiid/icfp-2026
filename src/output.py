@@ -7,3 +7,4 @@ class Output(Component):
             >|O|
              +-+
         """)
+        self.add_port("in", 0, 1)

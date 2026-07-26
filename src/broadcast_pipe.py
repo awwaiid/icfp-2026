@@ -10,3 +10,6 @@ class BroadcastPipe(Component):
             | ^  <|>
             +-----+
         """)
+        self.add_port("in", 0, 1)
+        self.add_port("out1", self.width - 1, 1)
+        self.add_port("out2", self.width - 1, 2)

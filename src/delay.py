@@ -11,3 +11,5 @@ class Delay(Component):
             | ^       <|
             +----------+
         """)
+        self.add_port("in", 0, 1)
+        self.add_port("out", self.width - 1, 1)

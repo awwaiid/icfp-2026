@@ -6,9 +6,9 @@ class Cat(Component):
     def init(self):
         inp = Input()
         out = Output()
-        self.draw_at(0, 0, inp)
-        self.draw_at(inp.width + 5, 0, out)
-        self.draw_pipe([inp.width - 1, 1, inp.width + 5, 1])
+        self.draw(inp, x=0, y=0)
+        self.draw(out, right_of=inp, spacing=5)
+        self.connect(inp, "out", out, "in")
 
 
 if __name__ == "__main__":
