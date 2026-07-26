@@ -20,8 +20,8 @@ class Program(Component):
             >|                                                                            |< # Port for stack result
              |                                                                            |
              |                                                                            |> # Port for stack op/val
-             |                                                              >rmV          |  # Consume anything leftover
-             |    Vs                                                        d  <         <|  # Known error
+             |           >WrWV                                                            |  # Consume anything leftover
+             |    Vs     dm  <                                                           <|  # Known error
              |                                                                            |  # Send error offset or 0
              |>>rb  d                                                                    ^|  # Input length into BP
              |                                                                            |  # Send error offset or 0
