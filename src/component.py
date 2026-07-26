@@ -64,6 +64,28 @@ class Component:
             thing.y = y
         self.canvas.place_grid(thing, x, y)
 
+    def draw_room_wall(self):
+        """Draw a room wall around everything drawn so far: '+' corners,
+        '-' along the top/bottom, '|' along the sides, sitting one cell
+        outside the current content's bounding box (so leave the top-left
+        cell margin free by drawing content starting at (1, 1)).
+        Returns the wall bounds (x1, y1, x2, y2)."""
+        if not self.canvas.chars:
+            raise ValueError("nothing to draw a wall around")
+        xs = [x for x, y in self.canvas.chars]
+        ys = [y for x, y in self.canvas.chars]
+        x1, x2 = min(xs) - 1, max(xs) + 1
+        y1, y2 = min(ys) - 1, max(ys) + 1
+        for x in range(x1, x2 + 1):
+            self.canvas.set(x, y1, "-")
+            self.canvas.set(x, y2, "-")
+        for y in range(y1, y2 + 1):
+            self.canvas.set(x1, y, "|")
+            self.canvas.set(x2, y, "|")
+        for cx, cy in ((x1, y1), (x2, y1), (x1, y2), (x2, y2)):
+            self.canvas.set(cx, cy, "+")
+        return x1, y1, x2, y2
+
     def add_port(self, name, x, y, direction="e"):
         """Declare a named port at (x, y) relative to this component's
         top-left corner. direction ('e', 'w', 'n', 's') is the way data
